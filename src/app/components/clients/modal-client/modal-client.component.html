@@ -1,0 +1,33 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Create New Client</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="client.name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" id="email" [(ngModel)]="client.email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" [(ngModel)]="client.phone" name="phone">
+            </div>
+
+        </form>
+        <div *ngIf="errmsj != ''">
+            <span style="color: red;">{{errmsj}}</span>
+        </div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="create(modal)">Create</button>
+	</div>
+</ng-template>
+
+<button class="btn btn-primary" style="width: 100%;" (click)="open(content)">New</button>

@@ -1,0 +1,54 @@
+<div class="app-clients">
+    <div class="btns">
+        <div class="col-2">
+            <app-modal-client (propagar)="create($event)"></app-modal-client>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" style="width: 100%;" (click)="export()">Export</button>
+        </div>
+        
+    </div>
+    <div class="search">
+        <div class="col-3">
+            <input type="text" style="width: 100%;" placeholder="Enter shared key" [(ngModel)]="sharedKey">
+        </div>
+        <div class="col-2">
+            <button class="btn btn-secondary " style="width: 100%;" (click)="search()">Search</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary " style="width: 100%;" disabled>Advanced Search</button>
+        </div>
+        
+    </div>
+
+    <div *ngIf="errmsj != ''">
+        <span [ngStyle]="{'color':colormsj}">{{errmsj}}</span>
+    </div>
+    
+    <h3>Clients</h3>
+    
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Shared key</th>
+                <th>Business ID</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Data Added</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of listaClients">
+                <td>{{client.sharedKey}}</td>
+                <td>{{client.name}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.creationDate}}</td>
+                <td>Edit</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
